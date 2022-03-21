@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Guitar Manufacturers.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The design document for this database schema can be found [here](https://sqlspy.io/import_db_designer/c3B5LTMyODkyNzQtMjA5ODgwNjQ2M2IzMWExMC01MDk2OTk=).
