@@ -2,18 +2,28 @@ require 'rails_helper'
 
 RSpec.describe 'guitars index page' do
   it 'can list all guitars with their attributes' do
-    guitar_1 = Guitar.create!(model: 'Stratocaster',
-                             num_of_frets: 21,
-                             six_string: true
-                            )
-    guitar_2 = Guitar.create!(model: 'Telecaster',
-                             num_of_frets: 21,
-                             six_string: true
-                            )
-    guitar_3 = Guitar.create!(model: 'Les Paul',
-                             num_of_frets: 22,
-                             six_string: true
-                            )
+    manufacturer_1 = Manufacturer.create!(name: "Fender",
+                                         headquarter_city: "Los Angeles",
+                                         years_in_business: 76,
+                                         custom_shop: true,
+                                        )
+    manufacturer_2 = Manufacturer.create!(name: "Gibson",
+                                         headquarter_city: "Nashville",
+                                         years_in_business: 120,
+                                         custom_shop: true,
+                                        )
+    guitar_1 = manufacturer_1.guitars.create!(model: 'Stratocaster',
+                                              num_of_frets: 21,
+                                              six_string: true
+                                             )
+    guitar_2 = manufacturer_1.guitars.create!(model: 'Telecaster',
+                                              num_of_frets: 21,
+                                              six_string: true
+                                             )
+    guitar_3 = manufacturer_2.guitars.create!(model: 'Les Paul',
+                                              num_of_frets: 22,
+                                              six_string: true
+                                             )
     visit "/guitars"
 
     expect(page).to have_content(guitar_1.model)

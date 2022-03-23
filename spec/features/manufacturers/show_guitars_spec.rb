@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'guitars show page' do
-  it 'can list guitar attributes by id' do
+RSpec.describe 'manufacturers show_guitars page' do
+  it 'can list all guitars for some manufacturer id' do
     manufacturer_1 = Manufacturer.create!(name: "Fender",
                                          headquarter_city: "Los Angeles",
                                          years_in_business: 76,
@@ -24,12 +24,15 @@ RSpec.describe 'guitars show page' do
                                               num_of_frets: 22,
                                               six_string: true
                                              )
-    visit "/guitars/#{guitar_2.id}"
 
+    visit "/manufacturers/#{manufacturer_1.id}/guitars"
+
+    expect(page).to have_content(guitar_1.model)
+    expect(page).to have_content(guitar_1.num_of_frets)
+    expect(page).to have_content(guitar_1.six_string)
     expect(page).to have_content(guitar_2.model)
     expect(page).to have_content(guitar_2.num_of_frets)
     expect(page).to have_content(guitar_2.six_string)
-    expect(page).not_to have_content(guitar_1.model)
-    expect(page).not_to have_content(guitar_3.num_of_frets)
+    expect(page).not_to have_content(guitar_3.model)
   end
 end
