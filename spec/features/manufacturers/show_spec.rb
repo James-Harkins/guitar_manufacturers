@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'manufacturers show page', type: :feature do
-  it 'can list manufacturer attributes' do
+  it 'can list manufacturer attributes by id' do
     manufacturer_1 = Manufacturer.create!(name: "Fender",
                                          headquarter_city: "Los Angeles",
                                          years_in_business: 76,
