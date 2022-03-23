@@ -31,7 +31,7 @@ RSpec.describe 'manufacturers index page', type: :feature do
                                          created_at: Time.parse("2012-09-01")
                                         )
     visit "/manufacturers"
-    save_and_open_page
+    
     expect(page).to have_content(manufacturer_1.created_at)
     expect(page).to have_content(manufacturer_2.created_at)
   end

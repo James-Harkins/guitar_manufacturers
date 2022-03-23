@@ -1,6 +1,7 @@
 <h1><%= @manufacturer.name %></h1>
-<h1>Headquarters: <%= @manufacturer.headquarter_city %></h1>
-<h1>Years in business: <%= @manufacturer.years_in_business %></h1>
-<h1>Custom shop? <%= @manufacturer.custom_shop %></h1>
-<h1>Created at: <%= @manufacturer.created_at %></h1>
-<h1>Updated at: <%= @manufacturer.updated_at %></h1>
+<p>Current model count: <%= @manufacturer.guitars.count %> </p>
+<p>Headquarters: <%= @manufacturer.headquarter_city %></p>
+<p>Years in business: <%= @manufacturer.years_in_business %></p>
+<p>Custom shop? <%= @manufacturer.custom_shop %></p>
+<p>Created at: <%= @manufacturer.created_at %></p>
+<p>Updated at: <%= @manufacturer.updated_at %></p>
