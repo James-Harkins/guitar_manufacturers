@@ -1,7 +1,12 @@
-<h1><%= @manufacturer.name %></h1>
-<p>Current model count: <%= @manufacturer.guitars.count %> </p>
-<p>Headquarters: <%= @manufacturer.headquarter_city %></p>
-<p>Years in business: <%= @manufacturer.years_in_business %></p>
-<p>Custom shop? <%= @manufacturer.custom_shop %></p>
-<p>Created at: <%= @manufacturer.created_at %></p>
-<p>Updated at: <%= @manufacturer.updated_at %></p>
+<div >
+  <h1><%= @manufacturer.name %></h1>
+  <p>Current model count: <%= @manufacturer.guitars.count %> </p>
+  <p>Headquarters: <%= @manufacturer.headquarter_city %></p>
+  <p>Years in business: <%= @manufacturer.years_in_business %></p>
+  <p>Custom shop? <%= @manufacturer.custom_shop %></p>
+  <p>Created at: <%= @manufacturer.created_at %></p>
+  <p>Updated at: <%= @manufacturer.updated_at %></p>
+</div>
+
+<a href="/manufacturers">Manufacturers Index</a>
+<a href="/guitars">Guitars Index</a>
