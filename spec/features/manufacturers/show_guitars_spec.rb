@@ -34,7 +34,5 @@ RSpec.describe 'manufacturers show_guitars page' do
     expect(page).to have_content(guitar_2.num_of_frets)
     expect(page).to have_content(guitar_2.six_string)
     expect(page).not_to have_content(guitar_3.model)
-    expect(page).not_to have_content(guitar_3.num_of_frets)
-    expect(page).not_to have_content(guitar_3.six_string)
   end
 end
