@@ -55,7 +55,7 @@ RSpec.describe 'guitars index page' do
                                               six_string: true
                                              )
 
-    visit "/manufacturers/#{manufacturer_1.id}"
+    visit "/guitars"
 
     expect(page).to have_link("Guitars Index")
 
@@ -88,7 +88,7 @@ RSpec.describe 'guitars index page' do
                                               six_string: true
                                              )
 
-    visit "/manufacturers/#{manufacturer_1.id}"
+    visit "/guitars"
 
     expect(page).to have_link("Manufacturers Index")
 

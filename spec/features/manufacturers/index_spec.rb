@@ -13,6 +13,7 @@ RSpec.describe 'manufacturers index page', type: :feature do
                                          custom_shop: true,
                                         )
     visit "/manufacturers"
+
     expect(page).to have_content(manufacturer_1.name)
     expect(page).to have_content(manufacturer_2.name)
   end
@@ -60,7 +61,7 @@ RSpec.describe 'manufacturers index page', type: :feature do
                                               six_string: true
                                              )
 
-    visit "/manufacturers/#{manufacturer_1.id}"
+    visit "/manufacturers"
 
     expect(page).to have_link("Guitars Index")
 
@@ -93,7 +94,7 @@ RSpec.describe 'manufacturers index page', type: :feature do
                                               six_string: true
                                              )
 
-    visit "/manufacturers/#{manufacturer_1.id}"
+    visit "/manufacturers"
 
     expect(page).to have_link("Manufacturers Index")
 
