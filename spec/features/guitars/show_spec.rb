@@ -31,5 +31,10 @@ RSpec.describe 'guitars show page' do
     expect(page).to have_content(guitar_2.six_string)
     expect(page).not_to have_content(guitar_1.model)
     expect(page).not_to have_content(guitar_3.num_of_frets)
+    expect(page).to have_link("Guitars Index")
+
+    click_link "Guitars Index"
+
+    expect(page).to eq("/guitars")
   end
 end

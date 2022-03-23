@@ -47,5 +47,10 @@ RSpec.describe 'manufacturers show page', type: :feature do
     visit "/manufacturers/#{manufacturer_1.id}"
 
     expect(page).to have_content("Current model count: #{manufacturer_1.guitars.count}")
+    expect(page).to have_link("Guitars Index")
+
+    click_link "Guitars Index"
+
+    expect(page).to eq("/guitars")
   end
 end
