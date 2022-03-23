@@ -12,7 +12,7 @@ RSpec.describe 'manufacturers show page', type: :feature do
                                          years_in_business: 120,
                                          custom_shop: true,
                                         )
-    visit "/manufacturers/1"
+    visit "/manufacturers/#{manufacturer_1.id}"
     expect(page).to have_content(manufacturer_1.name)
     expect(page).to have_content(manufacturer_1.headquarter_city)
     expect(page).to have_content(manufacturer_1.years_in_business)
