@@ -1,6 +1,9 @@
-<h1>All Manufacturers</h1>
+<div">
+  <h1>All Manufacturers</h1>
+  <% @manufacturers.each do |manufacturer| %>
+    <h2><%= manufacturer.name %></h2>
+    <p>Created at: <%= manufacturer.created_at %></p>
+  <% end %>
+</div>
 
-<% @manufacturers.each do |manufacturer| %>
-  <h2><%= manufacturer.name %></h2>
-  <p>Created at: <%= manufacturer.created_at %></p>
-<% end %>
+<a href="/guitars">Guitars Index</a>
