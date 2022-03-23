@@ -72,7 +72,7 @@ RSpec.describe 'manufacturers show page', type: :feature do
                                               num_of_frets: 22,
                                               six_string: true
                                              )
-                                             
+
     visit "/manufacturers/#{manufacturer_1.id}"
 
     expect(page).to have_link("Guitars Index")
