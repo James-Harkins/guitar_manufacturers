@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_22_225135) do
+ActiveRecord::Schema.define(version: 2022_03_23_015934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "guitars", force: :cascade do |t|
-    t.string "model_name"
-    t.integer "num_of_frets"
-    t.boolean "six_string"
-    t.integer "manufacturer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "manufacturers", force: :cascade do |t|
     t.string "name"
