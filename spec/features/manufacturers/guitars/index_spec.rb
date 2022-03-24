@@ -25,6 +25,10 @@ RSpec.describe 'manufacturers show_guitars page' do
                                               num_of_frets: 22,
                                               six_string: true
                                              )
+    @guitar_4 = @manufacturer_1.guitars.create(model: 'Jaguar',
+                                               num_of_frets: 21,
+                                               six_string: true
+                                             )
   end
 
   it 'can list all guitars for some manufacturer id' do
@@ -58,5 +62,18 @@ RSpec.describe 'manufacturers show_guitars page' do
     click_link "Manufacturers Index"
 
     expect(current_path).to eq("/manufacturers")
+  end
+
+  it 'can sort guitars alphabetically' do
+    visit "/manufacturers/#{@manufacturer_1.id}/guitars"
+
+    expect(@guitar_1.model).to appear_before(@guitar_2.model)
+    expect(@guitar_2.model).to appear_before(@guitar_4.model)
+
+    click_link "Sort Alphabetically"
+
+    expect(current_path).to eq("/manufacturers/#{@manufacturer_1.id}/guitars")
+    expect(@guitar_4.model).to appear_before(@guitar_1.model)
+    expect(@guitar_1.model).to appear_before(@guitar_2.model)
   end
 end

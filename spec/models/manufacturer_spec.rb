@@ -26,7 +26,13 @@ RSpec.describe Manufacturer do
                                              )
   end
 
-  it {should have_many :guitars}
+  describe '#relationships' do
+    it {should have_many :guitars}
+  end
+
+  describe '#order_descending' do
+
+  end
 
   describe '#count' do
     it 'can count the current number of guitar objects for some manufacturer' do
