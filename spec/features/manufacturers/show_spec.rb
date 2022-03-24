@@ -40,7 +40,7 @@ RSpec.describe 'manufacturers show page', type: :feature do
   it 'lists the number of guitars associated with the manufacturer' do
     visit "/manufacturers/#{@manufacturer_1.id}"
 
-    expect(page).to have_content("Current model count: #{@manufacturer_1.guitars.count}")
+    expect(page).to have_content("Current model count: 2")
   end
 
   it 'has a redirect link to the guitars index page' do
