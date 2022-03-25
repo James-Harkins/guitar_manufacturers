@@ -24,13 +24,25 @@ RSpec.describe Manufacturer do
                                               num_of_frets: 22,
                                               six_string: true
                                              )
+    @guitar_4 = @manufacturer_1.guitars.create!(model: 'Jaguar',
+                                              num_of_frets: 21,
+                                              six_string: true
+                                             )
   end
 
-  it {should have_many :guitars}
+  describe '#relationships' do
+    it {should have_many :guitars}
+  end
 
   describe '#count' do
     it 'can count the current number of guitar objects for some manufacturer' do
-      expect(@manufacturer_1.count).to eq(2)
+      expect(@manufacturer_1.count).to eq(3)
+    end
+  end
+
+  describe '#alphabetical guitars' do
+    it 'can order guitars alphabetically' do
+      expect(@manufacturer_1.alphabetical_guitars.first).to eq(@guitar_4)
     end
   end
 end
