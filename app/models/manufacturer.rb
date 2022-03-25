@@ -8,4 +8,8 @@ class Manufacturer < ApplicationRecord
   def count
     guitars.count
   end
+
+  def alphabetical_guitars
+    guitars.order(:model)
+  end
 end
