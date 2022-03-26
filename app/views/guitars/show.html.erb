@@ -4,5 +4,7 @@
   <p>Six-string? <%= @guitar.six_string %></p>
 </div>
 
-<a href="/manufacturers">Manufacturers Index</a>
+<%= link_to 'Update Guitar', "/guitars/#{@guitar.id}/edit" %><br>
+
+<a href="/manufacturers">Manufacturers Index</a><br>
 <a href="/guitars">Guitars Index</a>
