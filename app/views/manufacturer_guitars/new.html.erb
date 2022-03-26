@@ -1,0 +1,9 @@
+<%= form_with url: "/manufacturers/#{@manufacturer.id}/guitars", method: :post, local: true do |form| %>
+  <%= form.label :model %>
+  <%= form.text_field :model %><br>
+  <%= form.label :num_of_frets %>
+  <%= form.text_field :num_of_frets %><br>
+  <%= form.label :six_string %>
+  <%= form.check_box :six_string %><br>
+  <%= form.submit 'Create Guitar' %>
+<% end %>
