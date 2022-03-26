@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'manufacturers new page', type: :feature do
+RSpec.describe 'manufacturers edit page', type: :feature do
   before :each do
     @manufacturer_1 = Manufacturer.create!(name: "Fender",
                                          headquarter_city: "Los Angeles",
@@ -26,27 +26,27 @@ RSpec.describe 'manufacturers new page', type: :feature do
                                              )
   end
 
-  describe 'create new manufacturer' do
-    it 'has a link to create a new manufacturer' do
-      visit '/manufacturers'
+  describe 'update existing manufacturer' do
+    it 'has a link to update the manufacturer on its show page' do
+      visit "/manufacturers/#{@manufacturer_2.id}"
 
-      click_link 'New Manufacturer'
+      click_link 'Update Manufacturer'
 
-      expect(current_path).to eq('/manufacturers/new')
+      expect(current_path).to eq("/manufacturers/#{@manufacturer_2.id}/edit")
     end
 
     it 'can create a new manufacturer' do
-      visit '/manufacturers'
+      visit "/manufacturers/#{@manufacturer_2.id}"
 
-      click_link 'New Manufacturer'
+      click_link 'Update Manufacturer'
 
       fill_in 'Name', with: 'Ibanez'
       fill_in 'Headquarter city', with: 'Nagoya'
       fill_in 'Years in business', with: '65'
       check 'Custom shop'
-      click_on 'Create Manufacturer'
-      
-      expect(current_path).to eq('/manufacturers')
+      click_on 'Update Manufacturer'
+
+      expect(current_path).to eq("/manufacturers/#{@manufacturer_2.id}")
       expect(page).to have_content('Ibanez')
     end
   end

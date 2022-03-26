@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/manufacturers/new', to: 'manufacturers#new'
   post '/manufacturers', to: 'manufacturers#create'
   get '/manufacturers/:id', to: 'manufacturers#show'
+  get '/manufacturers/:id/edit', to: 'manufacturers#edit'
+  patch '/manufacturers/:id', to: 'manufacturers#update'
   get '/guitars', to: 'guitars#index'
   get '/guitars/:id', to: 'guitars#show'
   get '/manufacturers/:id/guitars', to: 'manufacturer_guitars#index'
