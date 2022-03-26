@@ -34,5 +34,20 @@ RSpec.describe 'manufacturers new page', type: :feature do
 
       expect(current_path).to eq('/manufacturers/new')
     end
+
+    it 'can create a new manufacturer' do
+      visit '/manufacturers'
+
+      click_link 'New Manufacturer'
+
+      fill_in 'Name', with: 'Ibanez'
+      fill_in 'Headquarter City', with: 'Nagoya'
+      fill_in 'Years In Business', with: '65'
+      check 'Custom Shop'
+      click_on 'Create Manufacturer'
+
+      expect(current_path).to eq('/manufacturers')
+      expect(page).to have_content('Ibanez')
+    end
   end
 end
