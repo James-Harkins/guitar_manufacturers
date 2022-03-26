@@ -1,7 +1,7 @@
 class GuitarsController < ApplicationController
 
   def index
-    @guitars = Guitar.all
+    @guitars = Guitar.only_six_strings
   end
 
   def show
