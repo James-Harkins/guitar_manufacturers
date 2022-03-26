@@ -54,4 +54,17 @@ RSpec.describe 'guitars index page' do
 
     expect(current_path).to eq("/manufacturers")
   end
+
+  it 'only lists six_string guitars' do
+    guitar_4 = @manufacturer_1.guitars.create!(model: "Strat7",
+                                               num_of_frets: 24,
+                                               six_string: false
+                                              )
+    visit "/guitars"
+
+    expect(page).to have_content(@guitar_1.model)
+    expect(page).to have_content(@guitar_2.num_of_frets)
+    expect(page).to have_content(@guitar_3.six_string)
+    expect(page).not_to have_content(guitar_4.model)
+  end
 end
