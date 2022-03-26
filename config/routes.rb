@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get '/guitars', to: 'guitars#index'
   get '/guitars/:id', to: 'guitars#show'
   get '/manufacturers/:id/guitars', to: 'manufacturer_guitars#index'
+  get '/manufacturers/:id/guitars/new', to: 'manufacturer_guitars#new'
+  post '/manufacturers/:id/guitars', to: 'manufacturer_guitars#create'
 end
