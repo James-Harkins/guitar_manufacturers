@@ -44,9 +44,9 @@ RSpec.describe 'guitar edit page' do
       fill_in 'Num of frets', with: '21'
       check 'Six string'
       click_on 'Update Guitar'
-
+      
       expect(current_path).to eq("/guitars/#{@guitar_2.id}")
-      expect(page).to have_content('Ibanez')
+      expect(page).to have_content('Jaguar')
     end
   end
 end

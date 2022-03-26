@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/manufacturers/:id/edit', to: 'manufacturers#edit'
   patch '/manufacturers/:id', to: 'manufacturers#update'
   get '/guitars', to: 'guitars#index'
+  get '/guitars/:id/edit', to: 'guitars#edit'
+  patch '/guitars/:id', to: 'guitars#update'
   get '/guitars/:id', to: 'guitars#show'
   get '/manufacturers/:id/guitars', to: 'manufacturer_guitars#index'
   get '/manufacturers/:id/guitars/new', to: 'manufacturer_guitars#new'
