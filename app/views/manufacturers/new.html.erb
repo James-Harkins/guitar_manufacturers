@@ -1,0 +1,11 @@
+<%= form_with url: "/manufacturers", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :headquarter_city %>
+  <%= form.text_field :headquarter_city %>
+  <%= form.label :years_in_business %>
+  <%= form.text_field :years_in_business %>
+  <%= form.label :custom_shop %>
+  <%= form.check_box :custom_shop %>
+  <%= form.submit 'Create Manufacturer' %>
+<% end %>

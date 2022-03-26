@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'manufacturers index page', type: :feature do
-
+RSpec.describe 'manufacturers new page', type: :feature do
   before :each do
     @manufacturer_1 = Manufacturer.create!(name: "Fender",
                                          headquarter_city: "Los Angeles",
@@ -27,37 +26,13 @@ RSpec.describe 'manufacturers index page', type: :feature do
                                              )
   end
 
-  it 'can list all manufacturer names' do
-    visit "/manufacturers"
+  describe 'create new manufacturer' do
+    it 'has a link to create a new manufacturer' do
+      visit '/manufacturers'
 
-    expect(page).to have_content(@manufacturer_1.name)
-    expect(page).to have_content(@manufacturer_2.name)
-  end
+      click_link 'New Manufacturer'
 
-  it 'lists manufacturers sorted by created_at' do
-    visit "/manufacturers"
-
-    expect(page).to have_content(@manufacturer_1.created_at)
-    expect(page).to have_content(@manufacturer_2.created_at)
-  end
-
-  it 'has a redirect link to the guitars index page' do
-    visit "/manufacturers"
-
-    expect(page).to have_link("Guitars Index")
-
-    click_link "Guitars Index"
-
-    expect(current_path).to eq("/guitars")
-  end
-
-  it 'has a redirect link to the manufacturers index page' do
-    visit "/manufacturers"
-
-    expect(page).to have_link("Manufacturers Index")
-
-    click_link "Manufacturers Index"
-
-    expect(current_path).to eq("/manufacturers")
+      expect(current_path).to eq('/manufacturers/new')
+    end
   end
 end
