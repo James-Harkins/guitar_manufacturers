@@ -1,7 +1,7 @@
 <div>
   <h1>All Guitars</h1>
   <% @guitars.each do |guitar| %>
-    <h3>Model: <%= guitar.model %></h3>
+    <h3 id="<%= guitar.id %>">Model: <%= guitar.model %> <%= link_to 'Update Guitar', "/guitars/#{guitar.id}/edit" %></h3>
     <p>Fret Count: <%= guitar.num_of_frets %></p>
     <p>Six-string? <%= guitar.six_string %></p>
   <% end %>

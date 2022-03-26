@@ -25,7 +25,7 @@ RSpec.describe 'manufacturers show_guitars page' do
                                               num_of_frets: 22,
                                               six_string: true
                                              )
-    @guitar_4 = @manufacturer_1.guitars.create(model: 'Jaguar',
+    @guitar_4 = @manufacturer_1.guitars.create!(model: 'Jaguar',
                                                num_of_frets: 21,
                                                six_string: true
                                              )
@@ -86,10 +86,17 @@ RSpec.describe 'manufacturers show_guitars page' do
     end
 
     visit "/manufacturers/#{@manufacturer_1.id}/guitars"
-
+    
     within(:id, "#{@guitar_4.id}") do
       click_link('Update Guitar')
-      expect(current_path).to eq("/guitar/#{@guitar_4.id}/edit")
+      expect(current_path).to eq("/guitars/#{@guitar_4.id}/edit")
+    end
+
+    visit "/manufacturers/#{@manufacturer_2.id}/guitars"
+
+    within(:id, "#{@guitar_3.id}") do
+      click_link('Update Guitar')
+      expect(current_path).to eq("/guitars/#{@guitar_3.id}/edit")
     end
   end
 end

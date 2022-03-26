@@ -25,6 +25,10 @@ RSpec.describe 'guitars index page' do
                                               num_of_frets: 22,
                                               six_string: true
                                              )
+    @guitar_4 = @manufacturer_1.guitars.create!(model: 'Jaguar',
+                                              num_of_frets: 21,
+                                              six_string: true
+                                             )
   end
 
   it 'can list all guitars with their attributes' do
@@ -61,7 +65,7 @@ RSpec.describe 'guitars index page' do
                                                six_string: false
                                               )
     visit "/guitars"
-
+    
     expect(page).to have_content(@guitar_1.model)
     expect(page).to have_content(@guitar_2.num_of_frets)
     expect(page).to have_content(@guitar_3.six_string)
@@ -80,7 +84,7 @@ RSpec.describe 'guitars index page' do
 
     within(:id, "#{@guitar_4.id}") do
       click_link('Update Guitar')
-      expect(current_path).to eq("/guitar/#{@guitar_4.id}/edit")
+      expect(current_path).to eq("/guitars/#{@guitar_4.id}/edit")
     end
   end
 end
