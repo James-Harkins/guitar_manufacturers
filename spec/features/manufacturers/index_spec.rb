@@ -60,4 +60,20 @@ RSpec.describe 'manufacturers index page', type: :feature do
 
     expect(current_path).to eq("/manufacturers")
   end
+
+  it 'has a link to edit every listed manufacturer' do
+    visit "/manufacturers"
+
+    within(:id, "#{@manufacturer_2.id}") do
+      click_link('Update Manufacturer')
+      expect(current_path).to eq("/manufacturers/#{@manufacturer_2.id}/edit")
+    end
+
+    visit "/manufacturers"
+
+    within(:id, "#{@manufacturer_1.id}") do
+      click_link('Update Manufacturer')
+      expect(current_path).to eq("/manufacturers/#{@manufacturer_1.id}/edit")
+    end
+  end
 end
