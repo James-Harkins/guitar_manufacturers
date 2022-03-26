@@ -8,6 +8,10 @@
   <p>Updated at: <%= @manufacturer.updated_at %></p>
 </div>
 
-<a href="/manufacturers/<%= @manufacturer.id %>/guitars"><%= @manufacturer.name %> Guitars</a>
-<a href="/manufacturers">Manufacturers Index</a>
-<a href="/guitars">Guitars Index</a>
+<%= link_to 'Update Manufacturer', "/manufacturers/#{@manufacturer.id}/edit" %>
+
+<div>
+  <a href="/manufacturers/<%= @manufacturer.id %>/guitars"><%= @manufacturer.name %> Guitars</a>
+  <a href="/manufacturers">Manufacturers Index</a>
+  <a href="/guitars">Guitars Index</a>
+</div>
