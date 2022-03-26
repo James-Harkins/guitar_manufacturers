@@ -60,4 +60,14 @@ RSpec.describe 'manufacturers index page', type: :feature do
 
     expect(current_path).to eq("/manufacturers")
   end
+
+  it 'has a link to create a new manufacturer' do
+    visit "/manufacturers"
+
+    expect(page).to have_link("Create Manufacturer")
+
+    click_link "Create Manufacturer"
+
+    expect(current_path).to eq("/manufacturers/new")
+  end
 end
