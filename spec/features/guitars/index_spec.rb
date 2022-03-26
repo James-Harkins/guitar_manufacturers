@@ -67,4 +67,20 @@ RSpec.describe 'guitars index page' do
     expect(page).to have_content(@guitar_3.six_string)
     expect(page).not_to have_content(guitar_4.model)
   end
+
+  it 'has a link to edit every listed guitar' do
+    visit "/guitars"
+
+    within(:id, "#{@guitar_1.id}") do
+      click_link('Update Guitar')
+      expect(current_path).to eq("/guitars/#{@guitar_1.id}/edit")
+    end
+
+    visit "/guitars"
+
+    within(:id, "#{@guitar_4.id}") do
+      click_link('Update Guitar')
+      expect(current_path).to eq("/guitar/#{@guitar_4.id}/edit")
+    end
+  end
 end

@@ -76,4 +76,20 @@ RSpec.describe 'manufacturers show_guitars page' do
     expect(@guitar_4.model).to appear_before(@guitar_1.model)
     expect(@guitar_1.model).to appear_before(@guitar_2.model)
   end
+
+  it 'has a link to edit every listed manufacturer' do
+    visit "/manufacturers/#{@manufacturer_1.id}/guitars"
+
+    within(:id, "#{@guitar_1.id}") do
+      click_link('Update Guitar')
+      expect(current_path).to eq("/guitars/#{@guitar_1.id}/edit")
+    end
+
+    visit "/manufacturers/#{@manufacturer_1.id}/guitars"
+
+    within(:id, "#{@guitar_4.id}") do
+      click_link('Update Guitar')
+      expect(current_path).to eq("/guitar/#{@guitar_4.id}/edit")
+    end
+  end
 end
