@@ -41,11 +41,11 @@ RSpec.describe 'manufacturers new page', type: :feature do
       click_link 'New Manufacturer'
 
       fill_in 'Name', with: 'Ibanez'
-      fill_in 'Headquarter City', with: 'Nagoya'
-      fill_in 'Years In Business', with: '65'
-      check 'Custom Shop'
+      fill_in 'Headquarter city', with: 'Nagoya'
+      fill_in 'Years in business', with: '65'
+      check 'Custom shop'
       click_on 'Create Manufacturer'
-
+      save_and_open_page
       expect(current_path).to eq('/manufacturers')
       expect(page).to have_content('Ibanez')
     end

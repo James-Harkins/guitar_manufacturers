@@ -11,4 +11,15 @@ class ManufacturersController < ApplicationController
   def new
   end
 
+  def create
+    manufacturer = Manufacturer.new({
+      name: params[:name],
+      headquarter_city: params[:headquarter_city],
+      years_in_business: params[:years_in_business],
+      custom_shop: params[:custom_shop],
+      })
+    manufacturer.save
+    redirect_to '/manufacturers'
+  end
+
 end
