@@ -8,7 +8,8 @@
   <p>Updated at: <%= @manufacturer.updated_at %></p>
 </div>
 
-<%= link_to 'Update Manufacturer', "/manufacturers/#{@manufacturer.id}/edit" %><br>
+<%= link_to 'Update Manufacturer', "/manufacturers/#{@manufacturer.id}/edit" %><br><br>
+<%= button_to 'Delete Manufacturer', "/manufacturers/#{@manufacturer.id}", method: :delete %><br>
 
 <div>
   <a href="/manufacturers/<%= @manufacturer.id %>/guitars"><%= @manufacturer.name %> Guitars</a><br>
