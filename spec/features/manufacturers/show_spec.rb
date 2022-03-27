@@ -85,7 +85,7 @@ RSpec.describe 'manufacturers show page', type: :feature do
 
   it 'deletes all guitars when the manufacturer is deleted' do
     visit "/manufacturers/#{@manufacturer_1.id}"
-
+    
     click_on "Delete Manufacturer"
 
     visit "/guitars"

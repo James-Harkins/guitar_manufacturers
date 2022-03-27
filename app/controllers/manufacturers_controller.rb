@@ -38,4 +38,11 @@ class ManufacturersController < ApplicationController
     redirect_to "/manufacturers/#{manufacturer.id}"
   end
 
+  def destroy
+    manufacturer = Manufacturer.find(params[:id])
+    manufacturer.guitars.destroy_all
+    manufacturer.destroy
+    redirect_to "/manufacturers"
+  end
+
 end
