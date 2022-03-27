@@ -73,4 +73,24 @@ RSpec.describe 'manufacturers show page', type: :feature do
 
     expect(current_path).to eq("/manufacturers/#{@manufacturer_1.id}/guitars")
   end
+
+  it 'has a button to delete the manufacturer' do
+    visit "/manufacturers/#{@manufacturer_1.id}"
+
+    click_on "Delete Manufacturer"
+
+    expect(current_path).to eq("/manufacturers")
+    expect(page).not_to have_content("#{@manufacturer_1.name}")
+  end
+
+  it 'deletes all guitars when the manufacturer is deleted' do
+    visit "/manufacturers/#{@manufacturer_1.id}"
+
+    click_on "Delete Manufacturer"
+
+    visit "/guitars"
+
+    expect(page).not_to have_content("#{@guitar_1.model}")
+    expect(page).not_to have_content("#{@guitar_2.model}")
+  end
 end
