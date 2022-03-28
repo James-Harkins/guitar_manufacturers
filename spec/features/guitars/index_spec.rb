@@ -96,9 +96,9 @@ RSpec.describe 'guitars index page' do
       expect(current_path).to eq("/guitars")
     end
 
-    expect(page).not_to have_content("#{@guitar_1.name}")
-    expect(page).to have_content("#{@guitar_2.name}")
-    expect(page).to have_content("#{@guitar_3.name}")
-    expect(page).to have_content("#{@guitar_4.name}")
+    expect(page).not_to have_content("#{@guitar_1.model}")
+    expect(page).to have_content("#{@guitar_2.model}")
+    expect(page).to have_content("#{@guitar_3.model}")
+    expect(page).to have_content("#{@guitar_4.model}")
   end
 end

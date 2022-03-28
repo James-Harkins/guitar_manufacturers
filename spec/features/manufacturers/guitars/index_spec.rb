@@ -127,12 +127,12 @@ RSpec.describe 'manufacturers show_guitars page' do
 
     within(:id, "#{@guitar_1.id}") do
       click_link('Delete Guitar')
-      expect(current_path).to eq("/manufacturers/#{@manufacturer_1.id}/guitars")
+      expect(current_path).to eq("/guitars")
     end
 
-    expect(page).not_to have_content("#{@guitar_1.name}")
-    expect(page).to have_content("#{@guitar_2.name}")
-    expect(page).to have_content("#{@guitar_3.name}")
-    expect(page).to have_content("#{@guitar_4.name}")
+    expect(page).not_to have_content("#{@guitar_1.model}")
+    expect(page).to have_content("#{@guitar_2.model}")
+    expect(page).to have_content("#{@guitar_3.model}")
+    expect(page).to have_content("#{@guitar_4.model}")
   end
 end
