@@ -59,7 +59,7 @@ RSpec.describe 'guitars show page' do
 
   it 'has a button to delete the guitar' do
     visit "/guitars/#{@guitar_1.id}"
-
+    
     click_on "Delete Guitar"
 
     expect(current_path).to eq("/guitars")
