@@ -1,7 +1,8 @@
 <div>
   <h1>All Manufacturers</h1>
   <% @manufacturers.each do |manufacturer| %>
-    <h2 id="<%= manufacturer.id %>"><%= manufacturer.name %><br><%= link_to 'Update Manufacturer', "/manufacturers/#{manufacturer.id}/edit" %><br>
+    <h2 id="<%= manufacturer.id %>"><%= manufacturer.name %><br>
+    <%= link_to 'Update Manufacturer', "/manufacturers/#{manufacturer.id}/edit" %><br>
     <%= link_to 'Delete Manufacturer', "/manufacturers/#{manufacturer.id}", method: :delete %></h2>
     <p>Created at: <%= manufacturer.created_at %></p>
   <% end %>
