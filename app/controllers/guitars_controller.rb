@@ -19,7 +19,6 @@ class GuitarsController < ApplicationController
       num_of_frets: params[:num_of_frets],
       six_string: params[:six_string]
       })
-    guitar.save
     redirect_to "/guitars/#{guitar.id}"
   end
 

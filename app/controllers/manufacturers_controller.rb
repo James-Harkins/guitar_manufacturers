@@ -34,7 +34,6 @@ class ManufacturersController < ApplicationController
       years_in_business: params[:years_in_business],
       custom_shop: params[:custom_shop]
       })
-    manufacturer.save
     redirect_to "/manufacturers/#{manufacturer.id}"
   end
 
