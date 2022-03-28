@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/guitars/:id/edit', to: 'guitars#edit'
   patch '/guitars/:id', to: 'guitars#update'
   get '/guitars/:id', to: 'guitars#show'
+  delete '/guitars/:id', to: 'guitars#destroy'
 
   get '/manufacturers/:id/guitars', to: 'manufacturer_guitars#index'
   get '/manufacturers/:id/guitars/new', to: 'manufacturer_guitars#new'
