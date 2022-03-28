@@ -29,6 +29,10 @@ RSpec.describe 'manufacturers show_guitars page' do
                                                num_of_frets: 21,
                                                six_string: true
                                              )
+    @guitar_5 = @manufacturer_1.guitars.create!(model: 'Strat7',
+                                               num_of_frets: 24,
+                                               six_string: false
+                                             )
   end
 
   it 'can list all guitars for some manufacturer id' do
@@ -86,7 +90,7 @@ RSpec.describe 'manufacturers show_guitars page' do
     end
 
     visit "/manufacturers/#{@manufacturer_1.id}/guitars"
-    
+
     within(:id, "#{@guitar_4.id}") do
       click_link('Update Guitar')
       expect(current_path).to eq("/guitars/#{@guitar_4.id}/edit")
@@ -98,5 +102,21 @@ RSpec.describe 'manufacturers show_guitars page' do
       click_link('Update Guitar')
       expect(current_path).to eq("/guitars/#{@guitar_3.id}/edit")
     end
+  end
+
+  it 'has a form to return only records that meet some user condition' do
+    visit "/manufacturers/#{@manufacturer_1.id}/guitars"
+
+    expect(page).to have_link("Filter")
+
+    fill_in "Minimum frets", with: "22"
+
+    expect(current_path).to eq("/manufacturers/#{@manufacturer_1.id}/guitars")
+
+    expect(page).to have_content("#{@guitar_5.model}")
+    expect(page).not_to have_content("#{@guitar_1.model}")
+    expect(page).not_to have_content("#{@guitar_2.model}")
+    expect(page).not_to have_content("#{@guitar_3.model}")
+    expect(page).not_to have_content("#{@guitar_4.model}")
   end
 end
