@@ -65,7 +65,7 @@ RSpec.describe 'guitars index page' do
                                                six_string: false
                                               )
     visit "/guitars"
-    
+
     expect(page).to have_content(@guitar_1.model)
     expect(page).to have_content(@guitar_2.num_of_frets)
     expect(page).to have_content(@guitar_3.six_string)
@@ -86,5 +86,19 @@ RSpec.describe 'guitars index page' do
       click_link('Update Guitar')
       expect(current_path).to eq("/guitars/#{@guitar_4.id}/edit")
     end
+  end
+
+  it 'has links to delete each guitar' do
+    visit "/guitars"
+
+    within(:id, "#{@guitar_1.id}") do
+      click_link('Delete Guitar')
+      expect(current_path).to eq("/guitars")
+    end
+
+    expect(page).not_to have_content("#{@guitar_1.name}")
+    expect(page).to have_content("#{@guitar_2.name}")
+    expect(page).to have_content("#{@guitar_3.name}")
+    expect(page).to have_content("#{@guitar_4.name}")
   end
 end

@@ -106,7 +106,7 @@ RSpec.describe 'manufacturers show_guitars page' do
 
   it 'has a form to return only records that meet some user condition' do
     visit "/manufacturers/#{@manufacturer_1.id}/guitars"
-    
+
     expect(page).to have_button("Only return guitars with more than this many frets")
 
     fill_in "Minimum frets", with: "22"
@@ -120,5 +120,19 @@ RSpec.describe 'manufacturers show_guitars page' do
     expect(page).not_to have_content("#{@guitar_2.model}")
     expect(page).not_to have_content("#{@guitar_3.model}")
     expect(page).not_to have_content("#{@guitar_4.model}")
+  end
+
+  it 'has links to delete each guitar' do
+    visit "/manufacturers/#{@manufacturer_1.id}/guitars"
+
+    within(:id, "#{@guitar_1.id}") do
+      click_link('Delete Guitar')
+      expect(current_path).to eq("/manufacturers/#{@manufacturer_1.id}/guitars")
+    end
+
+    expect(page).not_to have_content("#{@guitar_1.name}")
+    expect(page).to have_content("#{@guitar_2.name}")
+    expect(page).to have_content("#{@guitar_3.name}")
+    expect(page).to have_content("#{@guitar_4.name}")
   end
 end
