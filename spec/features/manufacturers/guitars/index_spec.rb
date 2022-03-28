@@ -106,10 +106,12 @@ RSpec.describe 'manufacturers show_guitars page' do
 
   it 'has a form to return only records that meet some user condition' do
     visit "/manufacturers/#{@manufacturer_1.id}/guitars"
-
-    expect(page).to have_link("Filter")
+    
+    expect(page).to have_button("Only return guitars with more than this many frets")
 
     fill_in "Minimum frets", with: "22"
+
+    click_button("Only return guitars with more than this many frets")
 
     expect(current_path).to eq("/manufacturers/#{@manufacturer_1.id}/guitars")
 

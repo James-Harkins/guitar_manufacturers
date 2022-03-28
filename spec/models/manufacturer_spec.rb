@@ -28,21 +28,31 @@ RSpec.describe Manufacturer do
                                               num_of_frets: 21,
                                               six_string: true
                                              )
+    @guitar_5 = @manufacturer_1.guitars.create!(model: 'Strat7',
+                                              num_of_frets: 24,
+                                              six_string: false
+                                             )
   end
 
   describe '#relationships' do
     it {should have_many :guitars}
   end
 
-  describe '#count' do
+  describe '#guitar_count' do
     it 'can count the current number of guitar objects for some manufacturer' do
-      expect(@manufacturer_1.count).to eq(3)
+      expect(@manufacturer_1.guitar_count).to eq(4)
     end
   end
 
   describe '#alphabetical guitars' do
     it 'can order guitars alphabetically' do
       expect(@manufacturer_1.alphabetical_guitars.first).to eq(@guitar_4)
+    end
+  end
+
+  describe '#guitars_with_frets_over' do
+    it 'can return only guitars with more than a number of frets passed in as an argument' do
+      expect(@manufacturer_1.guitars_with_frets_over(22).count).to eq(1)
     end
   end
 end

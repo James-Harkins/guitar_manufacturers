@@ -8,7 +8,12 @@
 </div>
 
 <%= link_to 'New Guitar', "/manufacturers/#{@manufacturer.id}/guitars/new" %><br>
-<%= link_to 'Sort Alphabetically', "/manufacturers/#{@manufacturer.id}/guitars?alphabetical=true" %><br>
+<%= link_to 'Sort Alphabetically', "/manufacturers/#{@manufacturer.id}/guitars?alphabetical=true" %><br><br>
+<%= form_with url: "/manufacturers/#{@manufacturer.id}/guitars", method: :get, local: true do |form| %>
+  <%= form.label :minimum_frets %>
+  <%= form.text_field :minimum_frets %>
+  <%= form.submit 'Only return guitars with more than this many frets' %>
+<% end %><br>
 
 <a href="/manufacturers">Manufacturers Index<br></a>
 <a href="/guitars">Guitars Index</a>

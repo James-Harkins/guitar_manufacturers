@@ -4,6 +4,8 @@ class ManufacturerGuitarsController < ApplicationController
     @manufacturer = Manufacturer.find(params[:id])
     if params[:alphabetical]
       @guitars = @manufacturer.alphabetical_guitars
+    elsif params[:minimum_frets]
+      @guitars = @manufacturer.guitars_with_frets_over(params[:minimum_frets])
     else
       @guitars = @manufacturer.guitars
     end
