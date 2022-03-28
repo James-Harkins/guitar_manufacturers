@@ -6,11 +6,13 @@ RSpec.describe Manufacturer do
                                          headquarter_city: "Los Angeles",
                                          years_in_business: 76,
                                          custom_shop: true,
+                                         created_at: Time.parse("2012-09-01")
                                         )
     @manufacturer_2 = Manufacturer.create!(name: "Gibson",
                                          headquarter_city: "Nashville",
                                          years_in_business: 120,
                                          custom_shop: true,
+                                         created_at: Time.parse("2015-09-01")
                                         )
     @guitar_1 = @manufacturer_1.guitars.create!(model: 'Stratocaster',
                                               num_of_frets: 21,
@@ -36,6 +38,27 @@ RSpec.describe Manufacturer do
 
   describe '#relationships' do
     it {should have_many :guitars}
+  end
+
+  describe '#validations' do
+    it { should validate_presence_of :name }
+    it { should allow_value("Suhr Guitars").for(:name) }
+    it { should_not allow_value("We_make_guitars!").for(:name) }
+    it { should validate_presence_of :headquarter_city }
+    it { should allow_value("San Bernardino").for(:headquarter_city) }
+    it { should_not allow_value("Austin!").for(:headquarter_city) }
+    it { should validate_presence_of :years_in_business }
+    it { should allow_value(55).for(:years_in_business) }
+    it { should_not allow_value(5.5).for(:years_in_business) }
+    it { should_not allow_value(-10).for(:years_in_business) }
+    it { should allow_value(false).for(:custom_shop) }
+    it { should_not allow_value(nil).for(:custom_shop) }
+  end
+
+  describe '#order_descending' do
+    it 'should order guitars by most_recently created' do
+      expect(Manufacturer.order_descending.first).to eq(@manufacturer_2)
+    end
   end
 
   describe '#guitar_count' do
