@@ -79,12 +79,13 @@ RSpec.describe 'manufacturers index page', type: :feature do
 
   it 'has links to delete each manufacturer' do
     visit "/manufacturers"
-
+    
     within(:id, "#{@manufacturer_1.id}") do
       click_link('Delete Manufacturer')
       expect(current_path).to eq("/manufacturers")
-      expect(page).not_to have_content("#{@manufacturer_1.name}")
-      expect(page).to have_content("#{@manufacturer_2.name}")
     end
+
+    expect(page).not_to have_content("#{@manufacturer_1.name}")
+    expect(page).to have_content("#{@manufacturer_2.name}")
   end
 end
