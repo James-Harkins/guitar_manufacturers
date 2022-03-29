@@ -1,13 +1,15 @@
 <div>
   <h1>All Guitars</h1>
   <% @guitars.each do |guitar| %>
-    <h3 id="<%= guitar.id %>">Model: <%= guitar.model %><br>
-    <%= link_to 'Update Guitar', "/guitars/#{guitar.id}/edit" %><br>
-    <%= link_to 'Delete Guitar', "/guitars/#{guitar.id}", method: :delete %></h3>
+    <h3>Model: <%= guitar.model %></h3>
     <p>Fret Count: <%= guitar.num_of_frets %></p>
     <p>Six-string? <%= guitar.six_string %></p>
+    <div id="<%= guitar.id %>">
+      <%= link_to 'Update Guitar', "/guitars/#{guitar.id}/edit" %><br>
+      <%= link_to 'Delete Guitar', "/guitars/#{guitar.id}", method: :delete %>
+    </div>
   <% end %>
-</div>
+</div><br>
 
 <a href="/manufacturers">Manufacturers Index</a><br>
 <a href="/guitars">Guitars Index</a>

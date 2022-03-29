@@ -1,16 +1,19 @@
 <div>
   <h1><%= @manufacturer.name %> Guitars</h1>
   <% @guitars.each do |guitar| %>
-    <h3 id="<%= guitar.id %>"><%= guitar.model %><br>
-    <%= link_to 'Update Guitar', "/guitars/#{guitar.id}/edit" %><br>
-    <%= link_to 'Delete Guitar', "/guitars/#{guitar.id}", method: :delete %></h3>
+    <h3><%= guitar.model %></h3>
     <p>Fret Count: <%= guitar.num_of_frets %></p>
     <p>Six-string? <%= guitar.six_string %></p>
+    <div id="<%= guitar.id %>">
+      <%= link_to 'Update Guitar', "/guitars/#{guitar.id}/edit" %><br>
+      <%= link_to 'Delete Guitar', "/guitars/#{guitar.id}", method: :delete %>
+    </div>
   <% end %>
 </div>
 
-<%= link_to 'New Guitar', "/manufacturers/#{@manufacturer.id}/guitars/new" %><br>
-<%= link_to 'Sort Alphabetically', "/manufacturers/#{@manufacturer.id}/guitars?alphabetical=true" %><br><br>
+<h3><%= link_to 'New Guitar', "/manufacturers/#{@manufacturer.id}/guitars/new" %></h3>
+<h3><%= link_to 'Sort Alphabetically', "/manufacturers/#{@manufacturer.id}/guitars?alphabetical=true" %></h3>
+
 <%= form_with url: "/manufacturers/#{@manufacturer.id}/guitars", method: :get, local: true do |form| %>
   <%= form.label :minimum_frets %>
   <%= form.text_field :minimum_frets %>
