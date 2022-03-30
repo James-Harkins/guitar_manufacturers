@@ -107,6 +107,6 @@ RSpec.describe 'manufacturers index page', type: :feature do
 
     expect(@manufacturer_2.name).to appear_before(@manufacturer_1.name)
 
-    expect(@manufacturer_2.guitar_count).to appear_before(@manufacturer_1.guitar_count)
+    expect("Current Guitar Count: #{@manufacturer_2.guitar_count}").to appear_before("Current Guitar Count: #{@manufacturer_1.guitar_count}")
   end
 end

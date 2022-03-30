@@ -5,16 +5,28 @@
 
 <div>
   <h1>All Manufacturers</h1>
-  <% @manufacturers.each do |manufacturer| %>
-    <h2><%= manufacturer.name %></h2>
-    <p>Created at: <%= manufacturer.created_at %></p>
-    <div id="<%= manufacturer.id %>">
-      <%= link_to 'Update Manufacturer', "/manufacturers/#{manufacturer.id}/edit" %><br>
-      <%= link_to 'Delete Manufacturer', "/manufacturers/#{manufacturer.id}", method: :delete %>
-    </div>
+  <% if @guitar_count == true %>
+    <% @manufacturers.each do |manufacturer| %>
+      <h2><%= manufacturer.name %></h2>
+      <p>Current Guitar Count: <%= manufacturer.guitar_count %></p>
+      <p>Created at: <%= manufacturer.created_at %></p>
+      <div id="<%= manufacturer.id %>">
+        <%= link_to 'Update Manufacturer', "/manufacturers/#{manufacturer.id}/edit" %><br>
+        <%= link_to 'Delete Manufacturer', "/manufacturers/#{manufacturer.id}", method: :delete %>
+      </div>
+    <% end %>
+  <% else %>
+    <% @manufacturers.each do |manufacturer| %>
+      <h2><%= manufacturer.name %></h2>
+      <p>Created at: <%= manufacturer.created_at %></p>
+      <div id="<%= manufacturer.id %>">
+        <%= link_to 'Update Manufacturer', "/manufacturers/#{manufacturer.id}/edit" %><br>
+        <%= link_to 'Delete Manufacturer', "/manufacturers/#{manufacturer.id}", method: :delete %>
+      </div>
+    <% end %>
   <% end %>
-</div>
+</div><br>
 
-<%= button_to 'Sort Manufacturers by Number of Guitars', '/manufacturers?guitar_count=true' %>
+<%= link_to 'Sort Manufacturers by Number of Guitars', "/manufacturers?guitar_count=true" %>
 
 <h3><%= link_to 'New Manufacturer', '/manufacturers/new' %></h3>

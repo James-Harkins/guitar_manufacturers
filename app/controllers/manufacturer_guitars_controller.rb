@@ -16,13 +16,14 @@ class ManufacturerGuitarsController < ApplicationController
   end
 
   def create
-    guitar = new.guitars.new({
-      model: params[:model],
-      num_of_frets: params[:num_of_frets],
-      six_string: params[:six_string],
-      })
+    guitar = new.guitars.new(guitar_params)
     guitar.save
     redirect_to "/manufacturers/#{@manufacturer.id}/guitars"
+  end
+
+  private
+  def guitar_params
+    params.permit(:model, :num_of_frets, :six_string)
   end
 
 end
