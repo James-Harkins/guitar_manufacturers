@@ -4,7 +4,7 @@
 
 The design document for this database schema can be found [here](https://sqlspy.io/import_db_designer/c3B5LTMyODkyNzQtMjA5ODgwNjQ2M2IzMWExMC01MDk2OTk=).
 
-The purpose of this project is to practice CRUD functionality for a One-to-Many relational database in a web application using the RESTful routes.
+The purpose of this project is to practice CRUD functionality for a One-to-Many Relational Database in a web application according to MVC principles and navigating the RESTful routes.
 
 In this case, the Parent Model is `Manufacturer` and the Child Model is `Guitar`. 
 
