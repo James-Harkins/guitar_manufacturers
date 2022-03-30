@@ -109,4 +109,12 @@ RSpec.describe 'manufacturers index page', type: :feature do
 
     expect("Current Guitar Count: #{@manufacturer_2.guitar_count}").to appear_before("Current Guitar Count: #{@manufacturer_1.guitar_count}")
   end
+
+  it 'has links to the show page for each manufacturer' do
+    visit "/manufacturers"
+
+    click_link "#{@manufacturer_2.name}"
+
+    expect(current_path).to eq("/manufacturers/#{@manufacturer_2.id}")
+  end
 end

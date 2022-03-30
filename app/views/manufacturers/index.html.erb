@@ -7,7 +7,7 @@
   <h1>All Manufacturers</h1>
   <% if @guitar_count == true %>
     <% @manufacturers.each do |manufacturer| %>
-      <h2><%= manufacturer.name %></h2>
+      <h2><%= link_to "#{manufacturer.name}", "/manufacturers/#{manufacturer.id}" %></h2>
       <p>Current Guitar Count: <%= manufacturer.guitar_count %></p>
       <p>Created at: <%= manufacturer.created_at %></p>
       <div id="<%= manufacturer.id %>">
@@ -17,7 +17,7 @@
     <% end %>
   <% else %>
     <% @manufacturers.each do |manufacturer| %>
-      <h2><%= manufacturer.name %></h2>
+      <h2><%= link_to "#{manufacturer.name}", "/manufacturers/#{manufacturer.id}" %></h2>
       <p>Created at: <%= manufacturer.created_at %></p>
       <div id="<%= manufacturer.id %>">
         <%= link_to 'Update Manufacturer', "/manufacturers/#{manufacturer.id}/edit" %><br>

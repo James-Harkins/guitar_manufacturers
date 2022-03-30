@@ -134,4 +134,12 @@ RSpec.describe 'manufacturers show_guitars page' do
     expect(page).to have_content("#{@guitar_3.model}")
     expect(page).to have_content("#{@guitar_4.model}")
   end
+
+  it 'has links to the show page for each guitar' do
+    visit "/manufacturers/#{@manufacturer_1.id}/guitars"
+
+    click_link "#{@guitar_2.model}"
+
+    expect(current_path).to eq("/guitars/#{@guitar_2.id}")
+  end
 end
