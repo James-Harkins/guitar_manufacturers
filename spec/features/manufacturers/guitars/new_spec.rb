@@ -30,7 +30,7 @@ RSpec.describe 'manufacturer_guitars new page' do
     it 'has a link to create a new guitar' do
       visit "/manufacturers/#{@manufacturer_1.id}/guitars"
 
-      click_link 'New Guitar'
+      click_link 'Create Guitar'
 
       expect(current_path).to eq("/manufacturers/#{@manufacturer_1.id}/guitars/new")
     end
@@ -38,7 +38,7 @@ RSpec.describe 'manufacturer_guitars new page' do
     it 'can create a new manufacturer' do
       visit "/manufacturers/#{@manufacturer_1.id}/guitars"
 
-      click_link 'New Guitar'
+      click_link 'Create Guitar'
 
       fill_in 'Model', with: 'Jaguar'
       fill_in 'Num of frets', with: '21'
