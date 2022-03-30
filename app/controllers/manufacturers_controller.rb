@@ -1,7 +1,11 @@
 class ManufacturersController < ApplicationController
 
   def index
-    @manufacturers = Manufacturer.order_descending
+    if params[:guitar_count]
+      @manufacturers = Manufacturer.sort_by_guitar_count
+    else
+      @manufacturers = Manufacturer.order_descending
+    end
   end
 
   def show
