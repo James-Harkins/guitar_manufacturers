@@ -107,6 +107,6 @@ RSpec.describe 'guitars index page' do
 
     click_link "#{@guitar_1.model}"
 
-    expect(current_path).to eq("guitars/#{@guitar_1.id}")
+    expect(current_path).to eq("/guitars/#{@guitar_1.id}")
   end
 end
