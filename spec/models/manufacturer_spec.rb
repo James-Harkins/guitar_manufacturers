@@ -55,27 +55,53 @@ RSpec.describe Manufacturer do
     it { should_not allow_value(nil).for(:custom_shop) }
   end
 
-  describe '#order_descending' do
-    it 'should order guitars by most_recently created' do
-      expect(Manufacturer.order_descending.first).to eq(@manufacturer_2)
+  describe 'class methods' do
+    describe '#order_descending' do
+      it 'should order guitars by most_recently created' do
+        expect(Manufacturer.order_descending.first).to eq(@manufacturer_2)
+      end
+    end
+
+    describe 'sort_by_guitar_count' do
+      it 'should order guitars by their guitar count' do
+        guitar_6 = @manufacturer_2.guitars.create!(model: 'SG',
+                                                  num_of_frets: 22,
+                                                  six_string: true
+                                                 )
+        guitar_7 = @manufacturer_2.guitars.create!(model: 'Firebird',
+                                                  num_of_frets: 22,
+                                                  six_string: true
+                                                 )
+        guitar_8 = @manufacturer_2.guitars.create!(model: 'ES-335',
+                                                  num_of_frets: 22,
+                                                  six_string: true
+                                                 )
+        guitar_9 = @manufacturer_2.guitars.create!(model: 'Flying V',
+                                                  num_of_frets: 22,
+                                                  six_string: true
+                                                 )
+        expect(Manufacturer.sort_by_guitar_count).to eq([@manufacturer_2, @manufacturer_1])
+      end
     end
   end
 
-  describe '#guitar_count' do
-    it 'can count the current number of guitar objects for some manufacturer' do
-      expect(@manufacturer_1.guitar_count).to eq(4)
+  describe 'instance methods' do
+    describe '#guitar_count' do
+      it 'can count the current number of guitar objects for some manufacturer' do
+        expect(@manufacturer_1.guitar_count).to eq(4)
+      end
     end
-  end
 
-  describe '#alphabetical guitars' do
-    it 'can order guitars alphabetically' do
-      expect(@manufacturer_1.alphabetical_guitars.first).to eq(@guitar_4)
+    describe '#alphabetical guitars' do
+      it 'can order guitars alphabetically' do
+        expect(@manufacturer_1.alphabetical_guitars.first).to eq(@guitar_4)
+      end
     end
-  end
 
-  describe '#guitars_with_frets_over' do
-    it 'can return only guitars with more than a number of frets passed in as an argument' do
-      expect(@manufacturer_1.guitars_with_frets_over(22).count).to eq(1)
+    describe '#guitars_with_frets_over' do
+      it 'can return only guitars with more than a number of frets passed in as an argument' do
+        expect(@manufacturer_1.guitars_with_frets_over(22).count).to eq(1)
+      end
     end
   end
 end
