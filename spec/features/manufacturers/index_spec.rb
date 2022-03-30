@@ -79,7 +79,7 @@ RSpec.describe 'manufacturers index page', type: :feature do
 
   it 'has links to delete each manufacturer' do
     visit "/manufacturers"
-    
+
     within(:id, "#{@manufacturer_1.id}") do
       click_link('Delete Manufacturer')
       expect(current_path).to eq("/manufacturers")
@@ -87,5 +87,26 @@ RSpec.describe 'manufacturers index page', type: :feature do
 
     expect(page).not_to have_content("#{@manufacturer_1.name}")
     expect(page).to have_content("#{@manufacturer_2.name}")
+  end
+
+  it 'can sort manufacturers by guitar count' do
+    guitar_4 = @manufacturer_2.guitars.create!(model: 'Les Paul Junior',
+                                              num_of_frets: 22,
+                                              six_string: true
+                                             )
+    guitar_5 = @manufacturer_2.guitars.create!(model: 'ES-335',
+                                              num_of_frets: 22,
+                                              six_string: true
+                                             )
+
+    visit "/manufacturers"
+
+    click_on "Sort Manufacturers by Number of Guitars"
+
+    expect(current_path).to eq("/manufacturers")
+
+    expect(@manufacturer_2.name).to appear_before(@manufacturer_1.name)
+
+    expect(@manufacturer_2.guitar_count).to appear_before(@manufacturer_1.guitar_count)
   end
 end
