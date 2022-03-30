@@ -36,7 +36,6 @@ RSpec.describe 'manufacturers show_guitars page' do
   end
 
   it 'can list all guitars for some manufacturer id' do
-
     visit "/manufacturers/#{@manufacturer_1.id}/guitars"
 
     expect(page).to have_content(@guitar_1.model)
