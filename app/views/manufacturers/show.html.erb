@@ -1,3 +1,6 @@
+<a href="/manufacturers">Manufacturers Index</a><br>
+<a href="/guitars">Guitars Index</a>
+
 <div >
   <h1><%= @manufacturer.name %></h1>
   <p>Current model count: <%= @manufacturer.guitar_count %> </p>
@@ -12,7 +15,5 @@
 <%= button_to 'Delete Manufacturer', "/manufacturers/#{@manufacturer.id}", method: :delete %><br>
 
 <div>
-  <a href="/manufacturers/<%= @manufacturer.id %>/guitars"><%= @manufacturer.name %> Guitars</a><br>
-  <a href="/manufacturers">Manufacturers Index</a><br>
-  <a href="/guitars">Guitars Index</a>
+  <a href="/manufacturers/<%= @manufacturer.id %>/guitars"><%= @manufacturer.name %> Guitars</a><br><br>
 </div>

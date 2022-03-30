@@ -1,3 +1,6 @@
+<a href="/manufacturers">Manufacturers Index</a><br>
+<a href="/guitars">Guitars Index</a>
+
 <div>
   <h1><%= @guitar.model %></h1>
   <p>Fret Count: <%= @guitar.num_of_frets %></p>
@@ -6,6 +9,3 @@
 
 <%= link_to 'Update Guitar', "/guitars/#{@guitar.id}/edit" %><br><br>
 <%= button_to 'Delete Guitar', "/guitars/#{@guitar.id}", method: :delete %><br>
-
-<a href="/manufacturers">Manufacturers Index</a><br>
-<a href="/guitars">Guitars Index</a>
