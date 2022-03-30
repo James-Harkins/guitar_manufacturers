@@ -13,6 +13,10 @@ class Manufacturer < ApplicationRecord
     order("created_at desc")
   end
 
+  def self.sort_by_guitar_count
+    all.sort_by {|manufacturer| manufacturer.guitar_count}.reverse
+  end
+
   def guitar_count
     guitars.count
   end
